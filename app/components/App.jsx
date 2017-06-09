@@ -22,23 +22,38 @@ class TodoApp extends React.Component {
 }
 
 
-function mapState(state, ownProps) {
-    //const {hello} = ownProps;
-    return {todos: state.todos};
+// function mapState(state, ownProps) {
+//     //const {hello} = ownProps;
+//     return {todos: state.todos};
+// }
+const mapStateToProps = (state) =>
+    ({
+        todos: state.todos
+    })
+
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAdd: (text) => {
+            dispatch(addTodo(text));
+        },
+        onRemove: (id) => {
+            dispatch(removeTodo(id));
+        }
+    }
 }
-
-function mapDispatch(dispatch) {
-
-    const onRemove = (id) => {
-        dispatch(removeTodo(id));
-    };
-
-    const onAdd = (text) => {
-        dispatch(addTodo(text));
-    };
-
-    return {onRemove, onAdd};
-}
+// function mapDispatch(dispatch) {
+//
+//     const onRemove = (id) => {
+//         dispatch(removeTodo(id));
+//     };
+//
+//     const onAdd = (text) => {
+//         dispatch(addTodo(text));
+//     };
+//
+//     return {onRemove, onAdd};
+// }
 
 
 // function logProps(WrappedComponent) {
@@ -56,4 +71,4 @@ function mapDispatch(dispatch) {
 //
 // export default connect(mapState, mapDispatch)(logProps(TodoApp));
 
-export default connect(mapState, mapDispatch)(TodoApp);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoApp);
