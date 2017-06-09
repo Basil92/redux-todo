@@ -13,7 +13,7 @@ let store = createStore(todoReducers);
 
 ReactDOM.render(
     <Provider store={store}>
-        <TodoApp hello="sdflkdjsflksdhfjdklsfjdklsfj111" />
+        <TodoApp />
     </Provider>,
     document.getElementById('container')
 );

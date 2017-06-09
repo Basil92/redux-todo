@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 var isProd = process.env.NODE_ENV === 'production' // true or false
 var jsDev = false;
 var jsProd = true;
@@ -11,6 +12,7 @@ console.log(process.env.NODE_ENV);
 
 
 module.exports = {
+    devtool: 'source-map',
     entry: './app/index.jsx',
     output: {
         filename: 'bundle.js',
@@ -46,6 +48,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './app/index.html', // Load a custom template
         })
+    ],
 
-    ]
 }

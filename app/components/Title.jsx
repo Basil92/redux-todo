@@ -1,8 +1,8 @@
 import React from 'react';
-const Title = ({todoCount}) => {
+const Title = ({todos}) => {
     return (
         <div>
-            <h1>to-do ({todoCount})</h1>
+            <h1>to-do ({todos.length})</h1>
         </div>
     );
 }
