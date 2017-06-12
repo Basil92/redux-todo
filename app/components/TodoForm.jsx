@@ -1,4 +1,7 @@
 import React from 'react';
+import {addTodo} from '../actions/index';
+import {connect} from 'react-redux';
+
 class TodoForm2 extends React.Component {
     constructor(props) {
         super(props);
@@ -14,7 +17,7 @@ class TodoForm2 extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        this.props.onSubmit(this.state.value);
+        this.props.onAdd(this.state.value);
         this.setState({value:""})
     }
 
@@ -28,4 +31,12 @@ class TodoForm2 extends React.Component {
         );
     }
 }
-export default TodoForm2;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onAdd: (text) => (
+            dispatch(addTodo(text))
+        )
+    }
+}
+
+export default connect(null, mapDispatchToProps)(TodoForm2);

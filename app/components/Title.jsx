@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 const Title = ({todos}) => {
     return (
         <div>
@@ -6,5 +7,10 @@ const Title = ({todos}) => {
         </div>
     );
 }
-export default Title;
+const mapStateToProps = (state) =>
+    ({
+        todos: state.todos
+    });
+
+export default connect(mapStateToProps)(Title);
 

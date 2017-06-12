@@ -44,7 +44,7 @@ const mySecondEnhancers = (store) => next => action => {
 }
 
 
-let store = createStore(todoReducers, initialState, applyMiddleware(logger, mySecondEnhancers));
+let store = createStore(todoReducers, initialState, applyMiddleware(logger));
 
 ReactDOM.render(
     <Provider store={store}>

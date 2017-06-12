@@ -1,11 +1,26 @@
 import React from 'react';
 import {Todo} from './Todo';
+import {connect} from 'react-redux';
+import {removeTodo} from '../actions/index';
 
-const TodoList = ({todos, remove}) => {
+const TodoList = ({todos, onRemove}) => {
     // Map through the todos
     const todoNode = todos.map((todo) => {
-       return (<Todo todo={todo} key={todo.id} remove={remove}/>)
+       return (<Todo todo={todo} key={todo.id} remove={onRemove}/>)
     });
     return (<div >{todoNode}</div>);
 }
-export default TodoList;
+
+const mapStateToProps = (state) => (
+    {todos: state.todos}
+);
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onRemove: (id) => (
+            dispatch(removeTodo(id))
+        )
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
