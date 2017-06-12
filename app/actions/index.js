@@ -1,7 +1,6 @@
-//let nextTodoId = 0;
 import { createAction } from 'redux-actions';
 
-export const addTodoNew = createAction('ADD_TODO_NEW', (text) => ({
+export const addTodo = createAction('ADD_TODO', (text) => ({
         id: (new Date()).toLocaleTimeString(),
         log: (id) => {
             console.log(`---- i am log function from add action with id ${id}`)
@@ -9,15 +8,15 @@ export const addTodoNew = createAction('ADD_TODO_NEW', (text) => ({
         text
 }));
 
-export const removeTodoNew = createAction('REMOVE_TODO_NEW', (id) => ({
+export const removeTodo = createAction('REMOVE_TODO', (id) => ({
     id
 }));
 
-export const addingNew = createAction('ADDING_NEW', (text) => ({
+export const adding = createAction('ADDING', (text) => ({
     text
 }));
 
-export const addingCompleteNew = createAction('ADDING_COMPLETE_NEW', (text) => ({
+export const addingComplete = createAction('ADDING_COMPLETE', (text) => ({
     text
 }));
 
@@ -32,13 +31,13 @@ export const addingCompleteNew = createAction('ADDING_COMPLETE_NEW', (text) => (
 //     }
 // })
 
-export const addTodoAsyncNew = (text) => {
+export const addTodoAsync = (text) => {
     return (dispatch) => {
-        dispatch(addingNew(text));
+        dispatch(adding(text));
         function timeout () {
-            dispatch(addTodoNew(text));
-            dispatch(addingCompleteNew(text));
+            dispatch(addTodo(text));
+            dispatch(addingComplete(text));
         }
-        setTimeout(timeout, 2000);
+        setTimeout(timeout, 1000);
     }
 };

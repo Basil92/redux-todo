@@ -7,14 +7,7 @@ import { Provider } from 'react-redux';
 import TodoApp from './components/App';
 import thunk from 'redux-thunk';
 import {initialState} from './store/initState';
-import {createLogger} from 'redux-logger';
-//console.clear();
 console.log("start!!!");
-
-
-
-// logger from library
-//const logger = createLogger();
 
 //my custom logger
 const logger = (store) => next => action => {
@@ -37,10 +30,8 @@ const mySecondEnhancers = (store) => next => action => {
             //output with delay because i return new action with delay
             return next(action);
         }
-
         setTimeout(func, 1000);
     }
-
 }
 
 let store = createStore(todoReducers, initialState, applyMiddleware(logger, thunk));
@@ -51,5 +42,3 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('container')
 );
-
-//export default initialState;
