@@ -28,6 +28,16 @@ export default function (state = initialState, action) {
             return {...state, todos: [...state.todos] };
             //return {...state, todos: [...state.todos, {id, text}]};
             break;
+        case 'ADDING':
+            console.log(`ADDING ${text}`);
+            //state.process =  true;
+            return {...state, process: true };
+            break;
+        case 'ADDING_COMPLETE':
+            console.log(`ADDING COMPLETE ${text}`);
+            //state.process =  false;
+            return {...state, process: false };
+            break;
     }
 
     return state;

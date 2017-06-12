@@ -14,3 +14,25 @@ export const removeTodo = (id) => {
         id
     }
 }
+export const adding = (text) => {
+    return {
+        type: 'ADDING',
+        text
+    }
+}
+export const addingComplete = (text) => {
+    return {
+        type: 'ADDING_COMPLETE',
+        text
+    }
+}
+export const addTodoAsync = (text) => {
+    return (dispatch) => {
+        dispatch(adding(text));
+        function timeout () {
+            dispatch(addTodo(text));
+            dispatch(addingComplete(text));
+        }
+        setTimeout(timeout, 2000);
+    }
+}
