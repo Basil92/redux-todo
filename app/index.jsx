@@ -2,25 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.sass';
 import todoReducers from './reducers/index';
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import TodoApp from './components/App';
 import thunk from 'redux-thunk';
+import {initialState} from './store/initState';
 import {createLogger} from 'redux-logger';
-console.clear();
+//console.clear();
 console.log("start!!!");
 
-const initialState = {
-    todos: [{id: 1, text: '1'}, {id: 2, text: '2'}, {id: 3, text: '3'}, {id: 4, text: '4'}],
-    process: false
-}
+
 
 // logger from library
 //const logger = createLogger();
 
 //my custom logger
 const logger = (store) => next => action => {
-    console.log(`type of action is ${action.type} action id is ${action.id} my old store is`);
+    console.log(`MIDDLEWARE LOGGER: type of action is ${action.type}. STATE IS DOWN: `);
     console.log(store.getState());
     return next(action);
 }
@@ -45,7 +43,6 @@ const mySecondEnhancers = (store) => next => action => {
 
 }
 
-
 let store = createStore(todoReducers, initialState, applyMiddleware(logger, thunk));
 
 ReactDOM.render(
@@ -55,4 +52,4 @@ ReactDOM.render(
     document.getElementById('container')
 );
 
-export default initialState;
+//export default initialState;

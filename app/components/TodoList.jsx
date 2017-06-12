@@ -1,7 +1,7 @@
 import React from 'react';
 import {Todo} from './Todo';
 import {connect} from 'react-redux';
-import {removeTodo} from '../actions/index';
+import {removeTodoNew} from '../actions/index';
 
 const TodoList = ({todos, onRemove}) => {
     // Map through the todos
@@ -18,7 +18,7 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => {
     return {
         onRemove: (id) => (
-            dispatch(removeTodo(id))
+            dispatch(removeTodoNew(id))
         )
     }
 }

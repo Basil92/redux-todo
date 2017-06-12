@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 // change addTodo => async addTodo
 import {addTodo} from '../actions/index';
-import {addTodoAsync} from '../actions/index';
+import {addTodoNew} from '../actions/index';
+import {addTodoAsyncNew} from '../actions/index';
 
 class TodoForm2 extends React.Component {
     constructor(props) {
@@ -37,7 +38,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onAdd: (text) => (
             //dispatch(addTodo(text))
-            dispatch(addTodoAsync(text))
+            dispatch(addTodoAsyncNew(text))
         )
     }
 }
